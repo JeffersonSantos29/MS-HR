@@ -1,0 +1,5 @@
+{"properties": [{
+  "name": "hr-worker.host",
+  "type": "java.lang.String",
+  "description": "A description for 'hr-worker.host'"
+}]}
