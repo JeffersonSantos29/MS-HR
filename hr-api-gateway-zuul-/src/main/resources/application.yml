@@ -1,0 +1,36 @@
+# Nome da aplicação
+spring:
+  application:
+    name: hr-api-gateway-zuul-
+  # Configuração específica do Spring Cloud Gateway
+  cloud:
+    gateway:
+      routes:
+        # Início da lista de rotas
+        - id: worker_route
+          uri: lb://hr-worker
+          predicates:
+            - Path=/hr-worker/**
+
+        # Você pode adicionar outra rota aqui, por exemplo, para o hr-payroll
+        - id: payroll_route
+          uri: lb://hr-payroll
+          predicates:
+            - Path=/hr-payroll/**
+
+# Porta do servidor
+server:
+  port: 8765
+
+# Configuração do Eureka Client (com a barra no final)
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+  instance:
+    hostname: localhost
+
+# CORRIGIDO: Bloco de logging com a indentação correta (2 espaços por nível)
+logging:
+  level:
+    org.springframework: DEBUG
