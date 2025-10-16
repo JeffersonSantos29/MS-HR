@@ -1,0 +1,32 @@
+spring:
+  application:
+    name: hr-api-gateway-spring-cloud
+
+  cloud:
+    gateway:
+      routes:
+        - id: worker_route
+          uri: lb://hr-worker
+          predicates:
+            - Path=/hr-worker/**
+          filters:
+            - StripPrefix=1
+
+        - id: payroll_route
+          uri: lb://hr-payroll
+          predicates:
+            - Path=/hr-payroll/**
+          filters:
+            - StripPrefix=1
+
+# Porta do servidor
+server:
+  port: 8765
+
+# Configuração do Eureka Client
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+  instance:
+    hostname: localhost
