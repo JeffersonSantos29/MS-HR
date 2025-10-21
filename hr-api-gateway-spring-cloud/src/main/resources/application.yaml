@@ -4,6 +4,9 @@ spring:
 
   cloud:
     gateway:
+      httpclient:
+        connect-timeout: 2000  # Tempo em ms para conectar (2 segundos)
+        response-timeout: 10s   # Tempo para obter resposta (10 segundos)
       routes:
         - id: worker_route
           uri: lb://hr-worker
@@ -19,11 +22,9 @@ spring:
           filters:
             - StripPrefix=1
 
-# Porta do servidor
 server:
   port: 8765
 
-# Configuração do Eureka Client
 eureka:
   client:
     serviceUrl:
