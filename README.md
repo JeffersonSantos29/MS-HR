@@ -126,7 +126,7 @@ Properties
 `# Define uma porta aleatória para permitir múltiplas instâncias
 server.port=0
 
-# Nome que este serviço usará para se registrar no Eureka
+ Nome que este serviço usará para se registrar no Eureka
 spring.application.name=hr-payroll
 
 # Endereço do Servidor Eureka
